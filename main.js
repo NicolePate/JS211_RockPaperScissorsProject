@@ -21,7 +21,7 @@ hand2 = hand2.trim();
 hand1 = hand1.toLowerCase();
 hand2 = hand2.toLowerCase();
 
-  if(hand1 === hand2) {
+  if(hand1 === hand2 && hand1 != '') {
     return "It's a tie!"
   }
   else if (hand1 === rock && hand2 === scissors ||hand1 === paper && hand2 === rock ||hand1 === scissors && hand2 === paper) {
@@ -30,8 +30,11 @@ hand2 = hand2.toLowerCase();
   else if (hand2 === rock && hand1 === scissors ||hand2 === paper && hand1 === rock ||hand2 === scissors && hand1 === paper){
    return "Hand two wins!"
   }
+  else if ( hand1 === '' || hand2 === '' ){
+    return "must enter rock, paper or scissors"
+  }
   else {
-    return "Use another input."
+    return "Use another input." 
   }
 };
 
@@ -68,6 +71,9 @@ if (typeof describe === 'function') {
       assert.equal(rockPaperScissors('rOcK', ' paper '), "Hand two wins!");
       assert.equal(rockPaperScissors('Paper', 'SCISSORS'), "Hand two wins!");
       assert.equal(rockPaperScissors('rock ', 'sCiSsOrs'), "Hand one wins!");
+    });
+    it('should detect if nothing entered', () => {
+      assert.equal(rockPaperScissors('', ''), "must enter rock, paper or scissors");
     });
   });
 } else {
