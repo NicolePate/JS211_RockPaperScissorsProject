@@ -33,6 +33,9 @@ hand2 = hand2.toLowerCase();
   else if ( hand1 === '' || hand2 === '' ){
     return "must enter rock, paper or scissors"
   }
+  else if (hand1 !== rock || hand1 !== paper || hand1 !== scissors || hand2 !== rock || hand2 !== paper || hand2 !== scissors) {
+    return "Not a vaild input."
+  }
   else {
     return "Use another input." 
   }
@@ -74,6 +77,9 @@ if (typeof describe === 'function') {
     });
     it('should detect if nothing entered', () => {
       assert.equal(rockPaperScissors('', ''), "must enter rock, paper or scissors");
+    });
+    it('should detect wrong input given' , () => {
+      assert.equal(rockPaperScissors('frog', 'paper'), "Not a vaild input.");
     });
   });
 } else {
